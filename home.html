@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FBR — Dance Crew</title>
+  <meta name="description" content="FBR Dance Crew — choreography, shows, workshops. Book us for events." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./home.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/">FBR</a>
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="siteNav">☰</button>
+      <nav id="siteNav" class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#crew">Crew</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a class="cta" href="#book">Book Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h1>FBR — Rhythm. Moves. Energy.</h1>
+          <p>We bring high-energy choreography, stage presence, and unforgettable performances. Book FBR for shows, workshops & brand collabs.</p>
+          <p><a class="btn" href="#book">Book the Crew</a> <a class="btn ghost" href="#videos">Watch Reel</a></p>
+        </div>
+        <div class="hero-media">
+          <!-- Replace with your showreel thumbnail or embedded video -->
+          <picture>
+            <source srcset="assets/img/hero.webp" type="image/webp">
+            <img src="assets/img/hero.jpg" alt="FBR dance crew performing on stage" class="hero-img">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section container">
+      <h2>About FBR</h2>
+      <p>FBR is a dance collective that fuses street dance with contemporary choreography. We perform nationally and teach workshops for all levels.</p>
+    </section>
+
+    <section id="crew" class="section container">
+      <h2>The Crew</h2>
+      <div class="grid crew-grid">
+        <article class="card">
+          <img src="assets/img/crew1.jpg" alt="Dancer 1">
+          <h3>Anna</h3>
+          <p>Lead choreographer & captain</p>
+        </article>
+        <article class="card">
+          <img src="assets/img/crew2.jpg" alt="Dancer 2">
+          <h3>Sam</h3>
+          <p>Performer & tutor</p>
+        </article>
+        <article class="card">
+          <img src="assets/img/crew3.jpg" alt="Dancer 3">
+          <h3>Rio</h3>
+          <p>Beat & moves specialist</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="gallery" class="section container">
+      <h2>Gallery</h2>
+      <div class="grid gallery-grid">
+        <img src="assets/img/g1.jpg" alt="FBR performance 1">
+        <img src="assets/img/g2.jpg" alt="FBR performance 2">
+        <img src="assets/img/g3.jpg" alt="FBR performance 3">
+      </div>
+    </section>
+
+    <section id="book" class="section container contact-section">
+      <h2>Book FBR</h2>
+      <form id="bookForm" class="form">
+        <label>
+          Your name
+          <input type="text" name="name" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          Event date
+          <input type="date" name="date" required>
+        </label>
+        <label>
+          Message / Details
+          <textarea name="message" rows="4"></textarea>
+        </label>
+        <button class="btn" type="submit">Send booking request</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="yr"></span> FBR — Follow us: <a href="#" aria-label="Instagram">Instagram</a> · <a href="#" aria-label="YouTube">YouTube</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // small interactivity: toggle nav + form handler
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      siteNav.classList.toggle('open');
+    });
+
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    document.getElementById('bookForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thanks — booking request sent! (connect your backend to actually submit).');
+    });
+  </script>
+</body>
+</html>
