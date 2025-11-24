@@ -1,46 +1,190 @@
+/* home.css — styles for FBR site
+   Includes: responsive layout, page transitions, parallax, animated mobile menu,
+   preloader logo animation, light/dark theme, and simple accessibility tweaks.
+*/
+
 :root{
-  --bg:#0f0f10;
-  --card:#111214;
+  --bg:#0d0d0f;
+  --card:#16171a;
   --accent:#ff3b3b;
-  --muted:#9aa0a6;
-  --max:1100px;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --text:#e5e5e5;
+  --muted:#9ca0a8;
+  --radius:18px;
+  --glass: rgba(255,255,255,0.04);
+  --transition: 320ms cubic-bezier(.2,.9,.2,1);
 }
+
+/* Light theme overrides (toggle by adding .light on <body>) */
+body.light{
+  --bg:#ffffff;
+  --card:#f7f7f8;
+  --text:#0b0b0b;
+  --muted:#5b5b5b;
+}
+
+/* Base */
 *{box-sizing:border-box}
-body{margin:0;background:linear-gradient(180deg,var(--bg),#070707);color:#fff;line-height:1.4}
-.container{max-width:var(--max);margin:0 auto;padding:2rem}
-.site-header{background:transparent;position:sticky;top:0;z-index:40}
+html,body{height:100%;}
+body{
+  margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;line-height:1.5;-webkit-font-smoothing:antialiased;transition:background var(--transition), color var(--transition);
+}
+.container{width:92%;max-width:1200px;margin:0 auto}
+
+/* PAGE TRANSITION: fade in/out for single page apps or simple load */
+.page-enter{opacity:0;transform:translateY(10px);}
+.page-enter-active{opacity:1;transform:none;transition:opacity .45s ease, transform .45s ease;}
+.page-exit{opacity:1}
+.page-exit-active{opacity:0;transform:translateY(-8px);transition:opacity .35s ease, transform .35s ease}
+
+/* PRELOADER */
+#loader{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .5s ease, visibility .5s ease}
+#loader.hide{opacity:0;visibility:hidden}
+.loader-logo{width:110px;height:110px;object-fit:contain;animation:spinIn 1.2s ease both}
+@keyframes spinIn{0%{transform:scale(.6) rotate(-12deg);opacity:0}50%{transform:scale(1.06) rotate(6deg);opacity:1}100%{transform:scale(1) rotate(0deg)}}
+
+/* Header */
+.site-header{position:fixed;top:0;width:100%;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.2));backdrop-filter:blur(8px);z-index:1000;padding:14px 0;box-shadow:0 6px 18px rgba(0,0,0,0.2)}
 .site-header .container{display:flex;align-items:center;justify-content:space-between}
-.brand{font-family:Montserrat, sans-serif;font-weight:700;color:#fff;text-decoration:none;font-size:1.25rem}
-.nav-toggle{display:none;background:none;border:0;color:#fff;font-size:1.25rem}
-.site-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem;align-items:center}
-.site-nav a{color:#fff;text-decoration:none;padding:.4rem .6rem;border-radius:6px}
-.site-nav a.cta{background:var(--accent);color:#fff}
-.hero{padding:3rem 0}
-.hero-grid{display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center}
-.hero-text h1{font-family:Montserrat, sans-serif;font-size:2.1rem;margin:0 0 .6rem}
-.btn{display:inline-block;padding:.6rem 1rem;border-radius:8px;text-decoration:none;background:var(--accent);color:#fff}
-.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.12)}
-.hero-img{width:100%;height:auto;border-radius:12px;display:block}
-.section{padding:2rem 0}
-.crew-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.card{background:var(--card);padding:1rem;border-radius:10px;text-align:center}
-.card img{width:100%;height:200px;object-fit:cover;border-radius:8px}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.gallery-grid img{width:100%;height:160px;object-fit:cover;border-radius:8px}
-.form label{display:block;margin-bottom:.8rem}
-.form input,.form textarea{width:100%;padding:.6rem;border-radius:6px;border:1px solid rgba(255,255,255,.08);background:transparent;color:#fff}
-.contact-section{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:2rem;border-radius:10px}
-.site-footer{padding:1.2rem 0;color:var(--muted);font-size:.95rem;border-top:1px solid rgba(255,255,255,.02)}
+.brand{font-weight:700;color:var(--accent);font-family:Montserrat, sans-serif;font-size:1.6rem;}
+
+/* Nav */
+.site-nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+.site-nav a{color:var(--text);font-weight:600;padding:6px 10px;border-radius:12px;transition:all .2s}
+.site-nav a:hover,.site-nav a:focus{color:#fff;transform:translateY(-2px)}
+.cta{background:var(--accent);color:#fff;padding:8px 16px;border-radius:12px}
+
+/* Mobile nav */
+.nav-toggle{display:none;background:transparent;border:none;color:var(--text);font-size:1.8rem;padding:6px}
+.nav-toggle.active{transform:rotate(90deg);transition:transform .35s ease}
+
+@media (max-width:768px){
+  .nav-toggle{display:block}
+  .site-nav{position:fixed;top:74px;right:18px;background:var(--card);padding:18px;border-radius:14px;width:250px;max-width:85vw;box-shadow:0 12px 40px rgba(0,0,0,0.6);transform:translateY(-8px) scale(.98);opacity:0;visibility:hidden;transition:opacity .28s ease, transform .28s ease, visibility .28s}
+  .site-nav.open{opacity:1;visibility:visible;transform:none}
+  .site-nav ul{flex-direction:column;gap:16px}
+}
+
+/* HERO + PARALLAX */
+.hero{padding-top:130px;padding-bottom:80px;min-height:66vh;display:flex;align-items:center}
+.hero.parallax{background-image:linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('assets/hero-bg.jpg');background-size:cover;background-position:center center;position:relative;overflow:hidden;transition:background-position .2s ease}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.hero-text h1{font-family:Montserrat, sans-serif;font-size:3rem;line-height:1.05;margin-bottom:12px}
+.hero-text p{color:var(--muted);margin-bottom:18px}
+.video-wrapper{position:relative;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.45)}
+.video-wrapper img{width:100%;height:100%;display:block}
+.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.35));opacity:0;transition:opacity .28s}
+.video-wrapper:hover .overlay,.video-wrapper:focus-within .overlay{opacity:1}
+.play-btn{font-size:3rem;color:#fff;background:rgba(0,0,0,0.4);padding:12px 18px;border-radius:999px}
+
 @media (max-width:900px){
   .hero-grid{grid-template-columns:1fr}
-  .crew-grid{grid-template-columns:repeat(2,1fr)}
-  .gallery-grid{grid-template-columns:repeat(2,1fr)}
-  .nav-toggle{display:block}
-  .site-nav{position:absolute;right:1rem;top:62px;background:#0a0a0a;padding:1rem;border-radius:8px;display:none}
-  .site-nav.open{display:block}
+  .hero-text h1{font-size:2.1rem}
+  .video-wrapper{margin-top:18px}
 }
-@media (max-width:520px){
-  .crew-grid,.gallery-grid{grid-template-columns:1fr}
-  .hero-text h1{font-size:1.4rem}
+
+/* Sections */
+.section{padding:60px 0}
+h2{text-align:center;margin-bottom:24px;font-size:1.8rem}
+
+/* Crew */
+.crew-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.card{background:var(--card);padding:18px;border-radius:14px;text-align:center;transition:transform .32s ease, box-shadow .32s ease}
+.card:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(0,0,0,0.45)}
+
+/* Crew Cards - Improved Uniform Images */
+.card img {
+  width: 100%;                /* full width of the card */
+  height: 220px;              /* fixed height for uniformity */
+  object-fit: cover;          /* crops without stretching */
+  object-position: center;    /* center the image in the box */
+  border-radius: var(--radius); /* matches your design radius */
+  margin-bottom: 12px;
+  transition: transform 0.3s ease; /* smooth hover effect */
 }
+
+/* Optional hover effect for images */
+.card img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width:768px) {
+  .card img {
+    height: 180px;  /* slightly shorter on tablets/mobiles */
+  }
+}
+
+@media (max-width:420px) {
+  .card img {
+    height: 150px;  /* small height for very small screens */
+  }
+}
+
+.card h3{margin:6px 0}
+
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.gallery-grid img{width:100%;height:160px;object-fit:cover;border-radius:12px;transition:transform .28s ease, opacity .28s}
+.gallery-grid img:hover{transform:scale(1.03);opacity:1}
+
+/* Form */
+.form{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.form input,.form textarea{background:#111214;border:1px solid rgba(255,255,255,0.03);padding:12px;border-radius:12px;color:var(--text);}
+.form input:focus,.form textarea:focus{outline:none;box-shadow:0 6px 22px rgba(0,0,0,0.5);border-color:var(--accent)}
+#formMessage{min-height:22px;font-weight:700}
+
+/* Footer */
+.site-footer{text-align:center;padding:34px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.03)}
+.site-footer a{color:var(--accent)}
+
+/* Fade-in sections using .visible */
+.fade-section{opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s ease}
+.fade-section.visible{opacity:1;transform:none}
+.slide-up{opacity:0;transform:translateY(40px);transition:opacity .6s ease, transform .6s ease}
+.slide-up.visible{opacity:1;transform:none}
+
+/* Accessibility helpers */
+.btn{display:inline-block;padding:10px 18px;border-radius:12px;background:var(--accent);color:#fff;font-weight:700}
+.btn.ghost{background:transparent;border:2px solid var(--accent);color:var(--text)}
+
+/* small screens tweaks */
+@media (max-width:420px){
+  .brand{font-size:1.2rem}
+  .hero-text h1{font-size:1.6rem}
+  .loader-logo{width:86px;height:86px}
+}
+
+/* ------------------------------------------------------------------
+   Deployment & SEO NOTES (copy this block to your project README)
+   ------------------------------------------------------------------
+
+   Netlify (recommended, simple drag & drop or Git-based):
+   1. Create a repo with these files (index.html, home.css, assets folder + images + logo.png).
+   2. Go to netlify.com -> New site -> Import from Git -> connect your Git provider.
+   3. Choose the repo, set build command blank (or "npm run build" if you have one) and publish directory to "." (root).
+   4. Netlify will give you a URL; configure a custom domain if desired.
+
+   Vercel (recommended for frameworks / static sites):
+   1. Create a repo and push files to GitHub/GitLab/Bitbucket.
+   2. Visit vercel.com -> New Project -> import repo.
+   3. For plain static sites, leave build command blank and set output directory to ".".
+   4. Deploy and configure domain in Vercel dashboard.
+
+   Quick tips:
+   - Ensure images are optimized (webp or compressed jpg). Keep a /assets folder.
+   - Add an _redirects file on Netlify if you plan SPA routing.
+   - Add a robots.txt and sitemap.xml for SEO.
+   - Use meta tags in index.html (title, description, open graph tags) — already included.
+
+   Example simple CI steps (Git-based):
+   - git init && git add . && git commit -m "init"
+   - create a GitHub repo & push
+   - connect repo to Netlify/Vercel
+*/
+
+
+
+
+
+
+
