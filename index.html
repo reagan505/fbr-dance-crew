@@ -2,148 +2,213 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FBR — Dance Crew</title>
+
   <meta name="description" content="FBR Dance Crew — choreography, shows, workshops. Book us for events." />
   <meta name="keywords" content="dance crew, choreography, dancers kenya, bookings, performances, workshops" />
   <meta name="author" content="FBR Dance Crew" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="./home.css">
+  <link rel="stylesheet" href="home.css">
 </head>
 
-<body>
-  <!-- PRELOADER -->
+<body class="dark">
+
+  <!-- ================= PRELOADER ================= -->
   <div id="loader">
     <img src="logo.png" alt="FBR Logo" class="loader-logo">
   </div>
 
-  <!-- HEADER -->
+  <!-- ================= HEADER ================= -->
   <header class="site-header">
-    <div class="container">
+    <div class="container header-grid">
+
+      <!-- Branding -->
       <a class="brand" href="#">FBR</a>
+
+      <!-- Mobile Menu Toggle -->
       <button id="navToggle" class="nav-toggle" aria-expanded="false">☰</button>
+
+      <!-- Navigation -->
       <nav id="siteNav" class="site-nav">
-        <ul>
+        <ul class="nav-list">
           <li><a href="#about">About</a></li>
           <li><a href="#crew">Crew</a></li>
-          <li><a href="#events">Events</a></li>
+          <li><a href="./event.html">Events</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a class="cta" href="#book">Book Us</a></li>
         </ul>
       </nav>
-      <button id="themeToggle" class="theme-btn">Dark Mode</button>
+
+      <!-- Theme Switch -->
+      <button id="themeToggle" class="theme-btn">☀️</button>
     </div>
   </header>
 
-  <!-- MAIN -->
+  <!-- ================= MAIN ================= -->
   <main>
-    <section class="hero parallax">
-      <div class="container hero-grid fade-section">
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero parallax fade-section">
+      <div class="container hero-grid">
+
+        <!-- Hero Text -->
         <div class="hero-text slide-up">
           <h1>FBR — Rhythm. Moves. Energy.</h1>
-          <p>We bring high-energy choreography and unforgettable performances. Book FBR for shows, workshops & brand collabs.</p>
           <p>
+            We bring high-energy choreography and unforgettable performances.  
+            Book FBR for shows, workshops, brand collaborations, and media productions.
+          </p>
+          <div class="hero-buttons">
             <a class="btn" href="#book">Book the Crew</a>
             <a class="btn ghost" href="#videos">Watch Reel</a>
-          </p>
+          </div>
         </div>
 
+        <!-- Hero Media -->
         <div class="hero-media fade-section">
           <div class="video-wrapper">
             <img src="assets/group.jpg" alt="FBR Crew">
             <div class="overlay">
-              <a href="https://www.youtube.com/watch?v=TmiAdCybiAo" class="play-btn" target="_blank">▶</a>
+              <a href="https://www.youtube.com/watch?v=TmiAdCybiAo"
+                 class="play-btn" target="_blank">▶</a>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
+    <!-- ========== ABOUT SECTION ========== -->
     <section id="about" class="section container fade-section">
       <h2>About FBR</h2>
-      <p>FBR fuses street dance with contemporary choreography. We perform nationally and teach workshops for all levels.</p>
+      <p>
+        FBR fuses street dance with contemporary choreography.  
+        We perform nationally, compete, and teach workshops for beginners to pros.
+      </p>
     </section>
 
+    <!-- ========== CREW SECTION ========== -->
     <section id="crew" class="section container fade-section">
       <h2>The Crew</h2>
+
       <div class="crew-grid">
-        <article class="card"><img src="assets/Joseph.jpg"><h3>Joseph</h3><p>Lead choreographer & captain</p></article>
-        <article class="card"><img src="./assets/sam.jpg"  width: 100%;><h3>Sam</h3><p>Performer & tutor</p></article>
-        <article class="card"><img src="./assets/lucy.jpg"><h3>Rio</h3><p>Beat & moves specialist</p></article>
+
+        <article class="card">
+          <img src="assets/Joseph.jpg" alt="Joseph">
+          <h3>Joseph</h3>
+          <p>Lead choreographer & captain</p>
+        </article>
+
+        <article class="card">
+          <img src="assets/sam.jpg" alt="Sam">
+          <h3>Sam</h3>
+          <p>Performer & tutor</p>
+        </article>
+
+        <article class="card">
+          <img src="assets/lucy.jpg" alt="Rio">
+          <h3>Rio</h3>
+          <p>Beat & moves specialist</p>
+        </article>
+
       </div>
     </section>
 
+    <!-- ========== GALLERY SECTION ========== -->
     <section id="gallery" class="section container fade-section">
       <h2>Gallery</h2>
+
       <div class="gallery-grid">
-        <img src="assets/group.jpg">
-        <img src="assets/image 1.jpg">
-        <img src="assets/Joseph.jpg">
-        <img src="assets/grt.jpg">
+        <img src="assets/group.jpg" alt="FBR">
+        <img src="assets/image 1.jpg" alt="Movement">
+        <img src="assets/Joseph.jpg" alt="Joseph">
+        <img src="assets/grt.jpg" alt="Crew">
       </div>
     </section>
 
+    <!-- ========== BOOKING SECTION ========== -->
     <section id="book" class="section container fade-section">
       <h2>Book FBR</h2>
+
       <form id="bookForm" class="form" novalidate>
-        <label>Your name<input type="text" required></label>
-        <label>Email<input type="email" required></label>
-        <label>Event date<input type="date" required></label>
-        <label>Message<textarea rows="4"></textarea></label>
+        <label>Your Name
+          <input type="text" required>
+        </label>
+
+        <label>Email
+          <input type="email" required>
+        </label>
+
+        <label>Event Date
+          <input type="date" required>
+        </label>
+
+        <label>Message
+          <textarea rows="4"></textarea>
+        </label>
+
         <div id="formMessage"></div>
-        <button class="btn" type="submit">Send booking request</button>
+
+        <button class="btn" type="submit">Send Booking Request</button>
       </form>
     </section>
+
   </main>
 
+  <!-- ================= FOOTER ================= -->
   <footer class="site-footer">
-    <p>© <span id="yr"></span> FBR — Follow us on <a href="#">Instagram</a> · <a href="#">YouTube</a></p>
+    <p>© <span id="yr"></span> FBR — Follow us on
+      <a href="#">Instagram</a> · <a href="#">YouTube</a>
+    </p>
   </footer>
 
+  <!-- ================= SCRIPTS ================= -->
   <script>
     /* LOADER */
-    window.addEventListener('load',()=>{
-      const loader=document.getElementById('loader');
-      loader.classList.add('hide');
+    window.addEventListener('load', () => {
+      document.getElementById('loader').classList.add('hide');
     });
 
-    /* MOBILE NAV ANIMATION */
-    const navToggle=document.getElementById('navToggle');
-    const siteNav=document.getElementById('siteNav');
-    navToggle.addEventListener('click',()=>{
+    /* MOBILE NAV */
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    navToggle.addEventListener('click', () => {
       siteNav.classList.toggle('open');
       navToggle.classList.toggle('active');
     });
 
-    /* APPEAR ON SCROLL */
-    const observer=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+    /* SCROLL ANIMATIONS */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    },{threshold:0.2});
+    }, { threshold: 0.2 });
 
-    document.querySelectorAll('.fade-section').forEach(el=>observer.observe(el));
+    document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
 
-    /* PARALLAX EFFECT */
-    window.addEventListener('scroll',()=>{
-      const offset=window.pageYOffset;
-      document.querySelector('.parallax').style.backgroundPositionY = offset * 0.4 + 'px';
+    /* PARALLAX */
+    window.addEventListener('scroll', () => {
+      document.querySelector('.parallax').style.backgroundPositionY =
+        window.pageYOffset * 0.4 + 'px';
     });
 
-    /* THEME SWITCH */
-    const themeBtn=document.getElementById('themeToggle');
-    themeBtn.addEventListener('click',()=>{
+    /* THEME TOGGLE */
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn.addEventListener('click', () => {
       document.body.classList.toggle('light');
+      themeBtn.textContent =
+        document.body.classList.contains('light') ? "🌙" : "☀️";
     });
 
     /* FOOTER YEAR */
-    document.getElementById('yr').textContent=new Date().getFullYear();
+    document.getElementById('yr').textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
 

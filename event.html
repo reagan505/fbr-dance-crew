@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events | FBR Dance Crew</title>
+  <meta name="description" content="FBR Dance Crew — upcoming shows, workshops, and performances. Book via WhatsApp.">
+  <link rel="stylesheet" href="event.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="dark">
+
+  <!-- THEME TOGGLE BUTTON -->
+  <div class="theme-toggle" id="themeToggle">
+    <span id="themeIcon">🌙</span>
+  </div>
+
+  <div class="container">
+
+    <!-- ============================= -->
+    <!-- 🚀 EVENTS SECTION -->
+    <!-- ============================= -->
+    <section id="events">
+
+      <div class="events-header">
+        <h2 class="events-title">FBR Dance Crew Upcoming Events</h2>
+        <p class="events-sub">
+          Join us for electrifying performances, workshops, and community dance events. Filter by month or location to find your perfect experience.
+        </p>
+      </div>
+
+      <!-- FILTERS -->
+      <div class="filters">
+        <select id="filter-month" class="select">
+          <option value="all">All months</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+
+        <select id="filter-location" class="select">
+          <option value="all">All locations</option>
+          <option value="Nairobi">Nairobi</option>
+          <option value="Maasai Mara">Maasai Mara</option>
+          <option value="Diani">Diani</option>
+          <option value="Mombasa">Mombasa</option>
+        </select>
+      </div>
+
+      <!-- EVENTS GRID -->
+      <div class="events-grid" id="eventsGrid">
+
+        <!-- Event 1 -->
+        <div class="event-card" data-month="3" data-location="Nairobi">
+          <img src="./assets/nai show.jfif" class="event-img" alt="FBR Performance Nairobi">
+          <div class="event-info">
+            <h3>Nairobi Street Dance Showcase</h3>
+            <p class="event-meta">📅 March • 📍 Nairobi</p>
+            <button class="event-btn">Book Now</button>
+          </div>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="event-card" data-month="5" data-location="Maasai Mara">
+          <img src="./assets/masai mara.jfif" class="event-img" alt="FBR Performance Maasai Mara">
+          <div class="event-info">
+            <h3>Maasai Mara Cultural Dance Performance</h3>
+            <p class="event-meta">📅 May • 📍 Maasai Mara</p>
+            <button class="event-btn">Book Now</button>
+          </div>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="event-card" data-month="7" data-location="Diani">
+          <img src="./assets/diani beach.jfif" class="event-img" alt="FBR Beach Workshop">
+          <div class="event-info">
+            <h3>Diani Beach Dance Workshop</h3>
+            <p class="event-meta">📅 July • 📍 Diani</p>
+            <button class="event-btn">Book Now</button>
+          </div>
+        </div>
+
+        <!-- Event 4 -->
+        <div class="event-card" data-month="10" data-location="Mombasa">
+          <img src="./assets/mombasa.jfif" class="event-img" alt="FBR Mombasa Show">
+          <div class="event-info">
+            <h3>Mombasa Rhythm & Moves Live Show</h3>
+            <p class="event-meta">📅 October • 📍 Mombasa</p>
+            <button class="event-btn">Book Now</button>
+          </div>
+        </div>
+
+        <!-- Event 5 -->
+        <div class="event-card" data-month="12" data-location="Nairobi">
+          <img src="./assets/year end.jfif" class="event-img" alt="FBR Year-End Performance">
+          <div class="event-info">
+            <h3>Year-End Gala Performance</h3>
+            <p class="event-meta">📅 December • 📍 Nairobi</p>
+            <button class="event-btn">Book Now</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ============================= -->
+  <!-- 📌 BOOKING MODAL -->
+  <!-- ============================= -->
+  <div id="bookingModal" class="modal-overlay">
+    <div class="modal">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h2 id="modalEventName">Book Event</h2>
+      <form id="bookingForm">
+        <label>Full Name</label>
+        <input type="text" id="custName" required>
+
+        <label>Email Address</label>
+        <input type="email" id="custEmail">
+
+        <label>Phone Number</label>
+        <input type="tel" id="custPhone" required>
+
+        <label>Date</label>
+        <input type="date" id="custDate" required>
+
+        <label>Number of Guests</label>
+        <input type="number" id="custGuests" min="1" value="1" required>
+
+        <button type="button" id="sendWhatsapp" class="whatsapp-btn">
+          Book via WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="event.js"></script>
+</body>
+</html>
+
+
+
