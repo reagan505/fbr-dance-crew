@@ -37,7 +37,7 @@ html, body {
   line-height: 1.5;
   background: var(--bg);
   transition: background var(--transition), color var(--transition);
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: hidden;
 }
 .container { width: 92%; max-width: 1200px; margin: 0 auto; }
 
@@ -107,19 +107,55 @@ html, body {
   color: #fff;
   transform: translateY(-2px);
 }
+
+/* ============================
+   BUTTON UPGRADE
+   ============================ */
+
+/* Gradient CTA buttons */
 .cta {
   background: var(--accent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  padding: 8px 16px;
-  border-radius: 12px;
+  padding: 10px 20px;
+  border-radius: 16px;
   font-weight: 700;
-  box-shadow: 0 4px 12px rgba(255,59,59,0.35);
-  transition: 0.3s;
+  font-size: 1rem;
+  box-shadow: 0 6px 18px rgba(255,59,59,0.45);
+  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
 }
-.cta:hover { filter: brightness(1.1); }
+.cta:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.15);
+  box-shadow: 0 10px 28px rgba(255,59,59,0.5);
+}
 
-/* MOBILE NAV */
+/* Hero section buttons */
+.hero-buttons a {
+  margin-right: 14px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 16px;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 6px 18px rgba(255,59,59,0.4);
+  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+.hero-buttons a:hover {
+  transform: translateY(-3px) scale(1.03);
+  filter: brightness(1.15);
+  box-shadow: 0 12px 32px rgba(255,59,59,0.55);
+}
+
+/* ============================
+   MOBILE NAV & HAMBURGER BUTTON
+   ============================ */
 .nav-toggle {
   display: none;
   background: transparent;
@@ -128,7 +164,44 @@ html, body {
   font-size: 1.8rem;
   padding: 6px;
   cursor: pointer;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  z-index: 2000;
 }
+
+/* Hamburger bars */
+.nav-toggle .bar {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 70%;
+  background: var(--accent);
+  border-radius: 3px;
+  left: 15%;
+  transition: all 0.35s ease;
+}
+.nav-toggle .top { top: 12px; }
+.nav-toggle .middle { top: 22px; }
+.nav-toggle .bottom { top: 32px; }
+
+/* Hover glowing effect */
+.nav-toggle:hover .bar {
+  transform: scaleX(1.2);
+  filter: brightness(1.4);
+  box-shadow: 0 3px 12px rgba(255,59,59,0.6), 0 0 6px rgba(255,127,80,0.5);
+}
+
+/* Active state: transforms to X */
+.nav-toggle.active .top {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.nav-toggle.active .middle { opacity: 0; }
+.nav-toggle.active .bottom {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile nav */
 @media (max-width: 768px) {
   .nav-toggle { display: block; }
   .site-nav {
@@ -173,16 +246,12 @@ html, body {
   background-position: center;
   transition: background-position 0.2s ease;
 }
-
-/* Grid correction for mobile */
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 36px;
   align-items: center;
 }
-
-/* Text */
 .hero-text h1 {
   font-family: Montserrat, sans-serif;
   font-size: 3rem;
@@ -197,19 +266,6 @@ html, body {
   margin-bottom: 18px;
 }
 
-/* Buttons */
-.hero-buttons a {
-  margin-right: 12px;
-  background: var(--accent);
-  color: #fff;
-  border-radius: 14px;
-  padding: 10px 20px;
-  font-weight: 700;
-  transition: 0.3s;
-  text-decoration: none;
-}
-.hero-buttons a:hover { filter: brightness(1.1); }
-
 /* VIDEO */
 .video-wrapper {
   position: relative;
@@ -222,6 +278,26 @@ html, body {
   display: block;
   object-fit: cover;
   transition: transform 0.3s;
+}
+.video-wrapper .overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.video-wrapper .play-btn {
+  font-size: 2rem;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(255,59,59,0.75);
+  padding: 14px 20px;
+  border-radius: 50%;
+  transition: transform 0.3s, filter 0.3s;
+}
+.video-wrapper .play-btn:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
 }
 
 /* SECTION TITLE */
@@ -290,39 +366,28 @@ h2 {
 /* ============================
    RESPONSIVE BREAKPOINTS
    ============================ */
-
-/* Tablets & Medium Screens */
 @media (max-width: 900px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
+  .hero-grid { grid-template-columns: 1fr; text-align: center; }
   .hero-text h1 { font-size: 2.2rem; }
-  .hero-buttons a {
-    margin: 8px 6px;
-    display: inline-block;
-  }
+  .hero-buttons a { margin: 8px 6px; display: inline-block; }
 }
-
-/* Small Phones */
 @media (max-width: 600px) {
   .section { padding: 45px 0; }
   .hero-text h1 { font-size: 1.9rem; }
   .hero-text p { font-size: 0.95rem; }
   .card img { max-height: 170px; }
   .gallery-grid { gap: 10px; }
+  .cta { padding: 10px 16px; font-size: 0.95rem; display: block; text-align: center; margin: 6px 0; }
+  .hero-buttons a { width: 100%; display: block; margin: 8px 0; text-align: center; }
 }
-
-/* Extra Small (iPhone SE, older phones) */
 @media (max-width: 420px) {
   .brand { font-size: 1.2rem; }
   .hero-text h1 { font-size: 1.6rem; }
   .loader-logo { width: 86px; height: 86px; }
   .card img { max-height: 150px; }
-  .hero-buttons a {
-    width: 100%;
-    display: block;
-    margin: 6px 0;
-    text-align: center;
-  }
+  .hero-buttons a { width: 100%; display: block; margin: 6px 0; text-align: center; }
 }
+
+
+
+
