@@ -1,3 +1,6 @@
+/* -------------------------------
+   ROOT VARIABLES
+--------------------------------*/
 :root{
   --bg:#0d0d0f;
   --card:#16171a;
@@ -23,19 +26,23 @@ body{
   font-family:Inter,sans-serif;
   transition:background var(--transition), color var(--transition);
 }
+
 .container{
   width:90%;
   max-width:1200px;
   margin:0 auto;
 }
 
-/* Filters */
+/* -------------------------------
+   FILTERS
+--------------------------------*/
 .filters{
   display:flex;
   gap:16px;
   justify-content:center;
   margin:24px 0;
 }
+
 .select{
   padding:8px 14px;
   border-radius:12px;
@@ -44,17 +51,21 @@ body{
   color:var(--text);
   transition:all .3s;
 }
+
 .select:focus{
   outline:none;
   box-shadow:0 0 12px var(--accent-gradient);
 }
 
-/* Events Grid */
+/* -------------------------------
+   EVENTS GRID
+--------------------------------*/
 .events-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:24px;
 }
+
 .event-card{
   background:var(--card);
   border-radius:var(--radius);
@@ -63,31 +74,38 @@ body{
   transition:transform .32s ease, box-shadow .32s ease;
   cursor:pointer;
 }
+
 .event-card:hover{
   transform:translateY(-8px);
   box-shadow:0 18px 40px rgba(0,0,0,0.5);
 }
+
 .event-img{
   width:100%;
   height:200px;
   object-fit:cover;
   transition:transform .3s ease;
 }
+
 .event-card:hover .event-img{
   transform:scale(1.05);
 }
+
 .event-info{
   padding:16px;
   text-align:center;
 }
+
 .event-info h3{
   margin:8px 0;
   color:#fff;
 }
+
 .event-meta{
   color:var(--muted);
   margin-bottom:12px;
 }
+
 .event-btn{
   padding:10px 18px;
   border-radius:12px;
@@ -97,13 +115,17 @@ body{
   font-weight:600;
   cursor:pointer;
   transition:all .3s;
+  width:100%;
 }
+
 .event-btn:hover{
   opacity:.9;
   transform:scale(1.03);
 }
 
-/* Modal - Reduced Size */
+/* -------------------------------
+   MODAL (Reduced Size)
+--------------------------------*/
 .modal-overlay{
   position:fixed;
   inset:0;
@@ -113,18 +135,20 @@ body{
   justify-content:center;
   z-index:10000;
 }
+
 .modal{
   background:var(--card);
   padding:18px;
   border-radius:12px;
   width:90%;
-  max-width:360px; /* Reduced size */
+  max-width:360px;
   position:relative;
   max-height:90vh;
   overflow-y:auto;
   box-shadow:0 12px 30px rgba(0,0,0,0.45);
   transition:all .3s;
 }
+
 .close-modal{
   position:absolute;
   top:10px;
@@ -134,7 +158,9 @@ body{
   color:var(--text);
 }
 
-/* Inputs */
+/* -------------------------------
+   INPUTS
+--------------------------------*/
 .modal input,
 .modal select,
 .modal textarea{
@@ -149,7 +175,9 @@ body{
   transition:all .2s;
 }
 
-/* WhatsApp button */
+/* -------------------------------
+   WHATSAPP BUTTON
+--------------------------------*/
 .whatsapp-btn{
   width:100%;
   padding:10px;
@@ -162,22 +190,28 @@ body{
   margin-top:6px;
   transition:all .3s;
 }
+
 .whatsapp-btn:hover{
   opacity:.9;
   transform:scale(1.02);
 }
 
-/* Price Calculator Section */
+/* -------------------------------
+   PRICE CALCULATOR
+--------------------------------*/
 .modal h3{
   font-size:15px;
   margin:10px 0 6px;
 }
+
 .modal hr{
   margin:12px 0;
   opacity:0.3;
 }
 
-/* Theme Toggle */
+/* -------------------------------
+   THEME TOGGLE
+--------------------------------*/
 .theme-toggle{
   position:fixed;
   top:16px;
@@ -188,3 +222,79 @@ body{
   cursor:pointer;
   z-index:1000;
 }
+
+/* ===========================================================
+   🌍 RESPONSIVE MOBILE OPTIMIZATION
+   ===========================================================*/
+
+/* 1️⃣ Small Phones (max-width: 480px) */
+@media (max-width: 480px) {
+
+  .filters{
+    flex-direction:column;
+    gap:10px;
+    width:100%;
+  }
+
+  .select{
+    width:100%;
+    text-align:center;
+    padding:10px 14px;
+  }
+
+  .events-grid{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  .event-img{
+    height:160px;
+  }
+
+  .event-info h3{
+    font-size:1.05rem;
+  }
+
+  .event-meta{
+    font-size:0.85rem;
+  }
+
+  .event-btn{
+    padding:12px;
+    font-size:0.95rem;
+  }
+
+  .modal{
+    max-width:92%;
+    padding:16px;
+  }
+}
+
+/* 2️⃣ Medium Phones & Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+
+  .filters{
+    gap:12px;
+  }
+
+  .event-img{
+    height:180px;
+  }
+
+  .event-card{
+    border-radius:14px;
+  }
+
+  .modal{
+    max-width:380px;
+  }
+}
+
+/* 3️⃣ Small Laptops (max-width: 1024px) */
+@media (max-width: 1024px) {
+
+  .events-grid{
+    gap:20px;
+  }
+}
+
