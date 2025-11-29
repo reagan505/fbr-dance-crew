@@ -68,6 +68,7 @@
             <button class="event-btn">Book Now</button>
           </div>
         </div>
+        
 
         <!-- Event 2 -->
         <div class="event-card" data-month="5" data-location="Maasai Mara">
@@ -116,32 +117,56 @@
   <!-- ============================= -->
   <!-- 📌 BOOKING MODAL -->
   <!-- ============================= -->
-  <div id="bookingModal" class="modal-overlay">
-    <div class="modal">
-      <span class="close-modal" id="closeModal">&times;</span>
-      <h2 id="modalEventName">Book Event</h2>
-      <form id="bookingForm">
-        <label>Full Name</label>
-        <input type="text" id="custName" required>
+<div id="bookingModal" class="modal-overlay">
+  <div class="modal">
+    <span class="close-modal" id="closeModal">&times;</span>
+    <h2 id="modalEventName">Book Event</h2>
 
-        <label>Email Address</label>
-        <input type="email" id="custEmail">
+    <form id="bookingForm">
 
-        <label>Phone Number</label>
-        <input type="tel" id="custPhone" required>
+      <label>Full Name</label>
+      <input type="text" id="custName" required>
 
-        <label>Date</label>
-        <input type="date" id="custDate" required>
+      <label>Email Address</label>
+      <input type="email" id="custEmail">
 
-        <label>Number of Guests</label>
-        <input type="number" id="custGuests" min="1" value="1" required>
+      <label>Phone Number</label>
+      <input type="tel" id="custPhone" required>
 
-        <button type="button" id="sendWhatsapp" class="whatsapp-btn">
-          Book via WhatsApp
-        </button>
-      </form>
-    </div>
+      <label>Date</label>
+      <input type="date" id="custDate" required>
+
+      <label>Number of Guests</label>
+      <input type="number" id="custGuests" min="1" value="1" required>
+
+      <!-- 🎯 PRICE CALCULATOR SECTION -->
+      <hr style="margin:15px 0; opacity:0.3;">
+      <h3 style="margin:0 0 10px;">Price Calculator</h3>
+
+      <!-- Price Auto-filled from event card -->
+      <label>Price Per Person</label>
+      <input type="number" id="pricePerHead" value="150" disabled>
+
+      <label>Currency</label>
+      <select id="currencySelect">
+        <option value="KES">KES</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+      </select>
+
+      <label>Total Price</label>
+      <input type="text" id="totalPrice" disabled style="background:#eee; font-weight:bold;">
+
+      <button type="button" id="sendWhatsapp" class="whatsapp-btn">
+        Book via WhatsApp
+      </button>
+
+    </form>
   </div>
+</div>
+
+
+
 
   <script src="event.js"></script>
 </body>
